@@ -139,8 +139,22 @@ for(i = 0;i < teerlingen.length; i++){
 var aantalNummer = [5]
 var een=0,twee=0,drie=0,vier=0,vijf=0,zes=0;
 var scoreEen=0,scoreTwee=0,scoreDrie=0,scoreVier=0,scoreVijf=0,scoreZes=0;
+<<<<<<< HEAD
+=======
+var two = false,three = false,four=false,five=false;
+  
+var chance = document.getElementById('scoreChance');
+>>>>>>> refs/remotes/ajkea/master
 
+scoreBerekenen = function(array, teller){
+  switch(array[teller]){
+    case 1:
+      een= een + 1;
+      scoreEen= een*1;
+      return getal1.innerHTML = een, scoreGetal1.innerHTML = scoreEen;
+      break;
 
+<<<<<<< HEAD
 scoreBerekenen = function(array, teller){
   switch(array[teller]){
     case 1:
@@ -161,6 +175,20 @@ scoreBerekenen = function(array, teller){
       return getal3.innerHTML = drie, scoreGetal3.innerHTML = scoreDrie;
       break;
 
+=======
+    case 2:
+      twee= twee + 1;
+      scoreTwee = twee*2;
+      return getal2.innerHTML = twee, scoreGetal2.innerHTML = scoreTwee;
+      break;
+
+    case 3:
+      drie= drie + 1;
+      scoreDrie = drie*3;
+      return getal3.innerHTML = drie, scoreGetal3.innerHTML = scoreDrie;
+      break;
+
+>>>>>>> refs/remotes/ajkea/master
     case 4:
       vier = vier + 1;
       scoreVier = vier*4;
@@ -182,6 +210,7 @@ scoreBerekenen = function(array, teller){
       break;
    }
  }
+<<<<<<< HEAD
 
 scoreBerekenenMin = function(array, teller){
   switch(array[teller]){
@@ -196,6 +225,22 @@ scoreBerekenenMin = function(array, teller){
       }
       break;
 
+=======
+
+scoreBerekenenMin = function(array, teller){
+  switch(array[teller]){
+    case 1:
+      een= een - 1;
+      scoreEen= een*1;
+      if(een==0){
+      return getal1.innerHTML = "",scoreGetal1.innerHTML="";
+      }
+      else{
+      return getal1.innerHTML = een, scoreGetal1.innerHTML = scoreEen;
+      }
+      break;
+
+>>>>>>> refs/remotes/ajkea/master
     case 2:
       twee= twee - 1;
       scoreTwee = twee*2;
@@ -256,10 +301,42 @@ scoreBerekenenMin = function(array, teller){
    }}
 //score updaten
 
+<<<<<<< HEAD
 threeOfAKind = function(array){
 
 }
 
+=======
+threeOfAKind = function(een,twee,drie,vier,vijf,zes){
+  if(een ==3 || twee==3||drie==3||vier==3||vijf==3||zes==3){
+    three=true;
+    scoreThree.innerHTML = scoreDrie;
+  }
+}
+
+fourOfAKind = function(een,twee,drie,vier,vijf,zes){
+  if(een ==4 || twee==4||drie==4||vier==4||vijf==4||zes==4) return true,four=true;
+}
+
+yahtzee = function(een,twee,drie,vier,vijf,zes){
+  if(een ==5 || twee==5||drie==5||vier==5||vijf==5||zes==5) return true,five=true;
+}
+
+paar = function(een,twee,drie,vier,vijf,zes){
+  if(een ==2 || twee==2||drie==2||vier==2||vijf==2||zes==2) return true,two=true;
+}
+
+fullHouse = function(threeOfAKind,paar){
+  if(threeOfAKind==true && paar == true){
+    return true;
+  }
+}
+
+chance = function(array){
+  sum = array.reduce(function(a,b){return a+b;},0);
+  scoreChance.innerHTML = sum;
+}
+>>>>>>> refs/remotes/ajkea/master
 
 
 
