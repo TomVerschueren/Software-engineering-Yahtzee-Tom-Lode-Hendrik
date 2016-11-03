@@ -111,6 +111,7 @@ var getal6 = document.getElementById('getal6');
              makeClickable();
      }
 startScorePlus(randomNumber);
+<<<<<<< HEAD
      });
 
 var updateClickableAndReset = function(index)
@@ -184,6 +185,10 @@ var makeClickable = function()
                 }
         }
 }
+=======
+     });          
+      
+>>>>>>> refs/remotes/ajkea/master
 /*
      var resetBtn = document.getElementsByClassName('restart');
 
@@ -207,7 +212,11 @@ var makeClickable = function()
         else
             {
                 teerlingen[index].className = "teerling red";
+<<<<<<< HEAD
 startScorePlus(randomNumber,index);
+=======
+                startScorePlus(randomNumber,index);
+>>>>>>> refs/remotes/ajkea/master
             }
               makeClickable();
 }
@@ -223,7 +232,11 @@ var two = false,three = false,four=false,five=false;
   
 var chance = document.getElementById('scoreChance');
 
+<<<<<<< HEAD
 scoreBerekenenplus = function(array, teller){
+=======
+scoreBerekenenPlus = function(array, teller){
+>>>>>>> refs/remotes/ajkea/master
   switch(array[teller]){
     case 1:
           een= een + 1;
@@ -288,7 +301,11 @@ scoreBerekenenplus = function(array, teller){
     default:
       break;
    }
+<<<<<<< HEAD
     return een,twee,drie,vier,vijf,zes;
+=======
+   return een,twee,drie,vier,vijf,zes;
+>>>>>>> refs/remotes/ajkea/master
  }
 
 scoreBerekenenMin = function(array, teller){
@@ -385,6 +402,7 @@ scoreBerekenenMin = function(array, teller){
 //score updaten
 
 threeOfAKind = function(een,twee,drie,vier,vijf,zes){
+  three=false;
   if(een ==3 || twee==3||drie==3||vier==3||vijf==3||zes==3){
     three=true;
     scoreThree.innerHTML = sum;
@@ -400,6 +418,7 @@ fourOfAKind = function(een,twee,drie,vier,vijf,zes){
 }
 
 yahtzee = function(een,twee,drie,vier,vijf,zes){
+<<<<<<< HEAD
   if(een ==5 || twee==5||drie==5||vier==5||zes==5)
   {
       scoreYahtzee.innerHTML=50;
@@ -413,6 +432,16 @@ yahtzee = function(een,twee,drie,vier,vijf,zes){
 paar = function(een,twee,drie,vier,vijf,zes){
     two=false;
   if(een ==2 || twee==2||drie==2||vier==2||vijf==2||zes==2) two=true;
+=======
+  if(een ==5 || twee==5||drie==5||vier==5||vijf==5||zes==5){
+    scoreYahtzee.innerHTML=50;
+  };
+}
+
+paar = function(een,twee,drie,vier,vijf,zes){
+  two=false;
+  if(een ==2 || twee==2||drie==2||vier==2||vijf==2||zes==2)two=true;
+>>>>>>> refs/remotes/ajkea/master
 }
 
 fullHouse = function(threeOfAKind,paar){
