@@ -62,7 +62,14 @@
     var sum;
     var vastgezet = [false,false,false,false,false];
     var teerlingen = [document.getElementById('teerlingHTML_1'), document.getElementById('teerlingHTML_2'), document.getElementById('teerlingHTML_3'), document.getElementById('teerlingHTML_4'), document.getElementById('teerlingHTML_5')];
-    var aantalWorpen = 0;
+    var clickableScore = [document.getElementById('score1') ,document.getElementById('score2') ,document.getElementById('score3') ,document.getElementById('score4') ,document.getElementById('score5') ,document.getElementById('score6') ,document.getElementById('score7') ,document.getElementById('score8') ,document.getElementById('score9') ,document.getElementById('score10') ,document.getElementById('score11') ,document.getElementById('score12') ,document.getElementById('score13')];
+var scoreHold = [false,false,false,false,false,false,false,false,false,false,false,false,false];
+var getal1 = document.getElementById('getal1');
+var getal2 = document.getElementById('getal2');
+var getal3 = document.getElementById('getal3');
+var getal4 = document.getElementById('getal4');
+var getal5 = document.getElementById('getal5');
+var getal6 = document.getElementById('getal6');
         //kijken of er op een dobbelsteen is gedrukt en deze in de array vastgezet op true zetten
 
 
@@ -101,10 +108,82 @@
               scoreBerekenen(randomNumber,i);
                   }
           }
+             makeClickable();
      }
 
-     });          
-      
+     });
+
+var updateClickableAndReset = function(index)
+{
+    scoreHold[index] = true;
+    clickableScore[index].className = "clicked";
+    aantalWorpen = 0;
+    disableBtn.disabled=false;
+    for(i = 0;i < teerlingen.length; i++){
+    vastgezet[i] = false;
+    teerlingen[i].innerHTML = 0;
+    turnGreen(i);
+    randomNumber = [];
+    }
+    if(clickableScore[0].className != "clicked")
+        {
+            een = 0;
+        }
+    if(clickableScore[1].className != "clicked")
+        {
+            twee = 0;
+        }
+    if(clickableScore[2].className != "clicked")
+        {
+            drie = 0;
+        }
+    if(clickableScore[3].className != "clicked")
+        {
+            vier = 0;
+        }
+    if(clickableScore[4].className != "clicked")
+        {
+            vijf = 0;
+        }
+    if(clickableScore[5].className != "clicked")
+        {
+            zes = 0;
+        }
+    for(i = 0; i<clickableScore.length; i++)
+        {
+            if(clickableScore[i].className != "clicked")
+                {
+                    clickableScore[i].className = "";
+                    clickableScore[i].children[2].children[0].innerHTML = "";
+                    clickableScore[i].children[1].children[0].innerHTML = "";
+                }
+        }
+    
+}
+
+var makeClickable = function()
+{
+    for(i = 0; i<clickableScore.length; i++)
+        {
+            if(clickableScore[i].children[2].children[0].innerHTML != "" && clickableScore[i].className != "clicked")
+                {
+                    clickableScore[i].className = "clickable";
+                }
+            if(clickableScore[i].children[2].children[0].innerHTML == "" && clickableScore[i].className != "clicked")
+                {
+                    clickableScore[i].className = "";
+                }
+            
+            if(clickableScore[i].className == "clickable")
+                {
+                   clickableScore[i].addEventListener('click', updateClickableAndReset.bind(null,i));
+                }
+            else
+                {
+                    clickableScore[i].removeEventListener('click', updateClickableAndReset.bind(null,i));
+                }
+        }
+}
 /*
      var resetBtn = document.getElementsByClassName('restart');
 
@@ -130,6 +209,7 @@
                 teerlingen[index].className = "teerling red";
                 scoreBerekenen(randomNumber,index);
             }
+              makeClickable();
 }
 
 //functie aanklikken dobbelstenen
@@ -139,174 +219,170 @@ for(i = 0;i < teerlingen.length; i++){
 var aantalNummer = [5]
 var een=0,twee=0,drie=0,vier=0,vijf=0,zes=0;
 var scoreEen=0,scoreTwee=0,scoreDrie=0,scoreVier=0,scoreVijf=0,scoreZes=0;
-<<<<<<< HEAD
-=======
 var two = false,three = false,four=false,five=false;
   
 var chance = document.getElementById('scoreChance');
->>>>>>> refs/remotes/ajkea/master
 
 scoreBerekenen = function(array, teller){
   switch(array[teller]){
     case 1:
-      een= een + 1;
-      scoreEen= een*1;
-      return getal1.innerHTML = een, scoreGetal1.innerHTML = scoreEen;
-      break;
-
-<<<<<<< HEAD
-scoreBerekenen = function(array, teller){
-  switch(array[teller]){
-    case 1:
-      een= een + 1;
-      scoreEen= een*1;
-      return getal1.innerHTML = een, scoreGetal1.innerHTML = scoreEen;
-      break;
-
+          een= een + 1;
+        if (!scoreHold[0])
+            {
+                
+                scoreEen= een*1;
+                return getal1.innerHTML = een, scoreGetal1.innerHTML = scoreEen;
+            }
+                break;
+          
     case 2:
-      twee= twee + 1;
-      scoreTwee = twee*2;
-      return getal2.innerHTML = twee, scoreGetal2.innerHTML = scoreTwee;
-      break;
+           twee= twee + 1;
+          if (!scoreHold[1])
+              {
+               
+                scoreTwee = twee*2;
+                return getal2.innerHTML = twee, scoreGetal2.innerHTML = scoreTwee;
+              }
+                break;
 
     case 3:
-      drie= drie + 1;
-      scoreDrie = drie*3;
-      return getal3.innerHTML = drie, scoreGetal3.innerHTML = scoreDrie;
-      break;
-
-=======
-    case 2:
-      twee= twee + 1;
-      scoreTwee = twee*2;
-      return getal2.innerHTML = twee, scoreGetal2.innerHTML = scoreTwee;
-      break;
-
-    case 3:
-      drie= drie + 1;
-      scoreDrie = drie*3;
-      return getal3.innerHTML = drie, scoreGetal3.innerHTML = scoreDrie;
-      break;
-
->>>>>>> refs/remotes/ajkea/master
+          drie= drie + 1;
+          if (!scoreHold[2])
+              {
+                  
+                  scoreDrie = drie*3;
+                  return getal3.innerHTML = drie, scoreGetal3.innerHTML = scoreDrie;
+            }
+                  break;
+              
+          
     case 4:
-      vier = vier + 1;
-      scoreVier = vier*4;
-      return getal4.innerHTML = vier, scoreGetal4.innerHTML = scoreVier;
-      break;
+          vier = vier + 1;
+          if (!scoreHold[3])
+              {
+                  
+                  scoreVier = vier*4;
+                  return getal4.innerHTML = vier, scoreGetal4.innerHTML = scoreVier;
+              }
+                  break;
 
     case 5:
-      vijf= vijf + 1;
-      scoreVijf = vijf*5;
-      return getal5.innerHTML = vijf, scoreGetal5.innerHTML = scoreVijf;
-      break;
+          vijf= vijf + 1;
+          if (!scoreHold[4])
+              {
+                  
+                  scoreVijf = vijf*5;
+                  return getal5.innerHTML = vijf, scoreGetal5.innerHTML = scoreVijf;
+              }
+                  break;
 
     case 6:
-      zes= zes + 1;
-      scoreZes = zes*6;
-      return getal6.innerHTML = zes, scoreGetal6.innerHTML = scoreZes;
-      break;
+          zes= zes + 1;
+          if (!scoreHold[5])
+              {
+                  
+                  scoreZes = zes*6;
+                  return getal6.innerHTML = zes, scoreGetal6.innerHTML = scoreZes;
+              }
+                  break;
     default:
       break;
    }
  }
-<<<<<<< HEAD
 
 scoreBerekenenMin = function(array, teller){
   switch(array[teller]){
     case 1:
-      een= een - 1;
-      scoreEen= een*1;
-      if(een==0){
-      return getal1.innerHTML = "",scoreGetal1.innerHTML="";
-      }
-      else{
-      return getal1.innerHTML = een, scoreGetal1.innerHTML = scoreEen;
-      }
+          een= een - 1;
+          if (!scoreHold[0])
+              {
+                  
+                  scoreEen= een*1;
+                  if(een==0){
+                  return getal1.innerHTML = "",scoreGetal1.innerHTML="";
+                  }
+                  else{
+                  return getal1.innerHTML = een, scoreGetal1.innerHTML = scoreEen;
+                  }
+              }
       break;
 
-=======
-
-scoreBerekenenMin = function(array, teller){
-  switch(array[teller]){
-    case 1:
-      een= een - 1;
-      scoreEen= een*1;
-      if(een==0){
-      return getal1.innerHTML = "",scoreGetal1.innerHTML="";
-      }
-      else{
-      return getal1.innerHTML = een, scoreGetal1.innerHTML = scoreEen;
-      }
-      break;
-
->>>>>>> refs/remotes/ajkea/master
     case 2:
-      twee= twee - 1;
-      scoreTwee = twee*2;
-      if(twee==0){
-      return getal2.innerHTML = "",scoreGetal2.innerHTML="";
-      }
-      else{
-      return getal2.innerHTML = twee, scoreGetal2.innerHTML = scoreTwee;
-      }
-      return getal2.innerHTML = twee, scoreGetal2.innerHTML = scoreTwee;
-      break;
+          twee= twee - 1;
+          if (!scoreHold[1])
+              {
+                  
+                  scoreTwee = twee*2;
+                  if(twee==0){
+                  return getal2.innerHTML = "",scoreGetal2.innerHTML="";
+                  }
+                  else{
+                  return getal2.innerHTML = twee, scoreGetal2.innerHTML = scoreTwee;
+                  }
+              }
+                  break;
 
     case 3:
-      drie= drie - 1;
-      scoreDrie = drie*3;
-      if(drie==0){
-      return getal3.innerHTML = "",scoreGetal3.innerHTML="";
-      }
-      else{
-      return getal3.innerHTML = drie, scoreGetal3.innerHTML = scoreDrie;
-      }
+          drie= drie - 1;
+          if (!scoreHold[2])
+              { 
+                  scoreDrie = drie*3;
+                  if(drie==0){
+                  return getal3.innerHTML = "",scoreGetal3.innerHTML="";
+                  }
+                  else{
+                  return getal3.innerHTML = drie, scoreGetal3.innerHTML = scoreDrie;
+                  }
+              }
       break;
 
     case 4:
-      vier = vier - 1;
-      scoreVier = vier*4;
-      if(vier==0){
-      return getal4.innerHTML = "",scoreGetal4.innerHTML="";
-      }
-      else{
-      return getal4.innerHTML = vier, scoreGetal4.innerHTML = scoreVier;
-      }
+          vier = vier - 1;
+          if (!scoreHold[3])
+              {
+                  
+                  scoreVier = vier*4;
+                  if(vier==0){
+                  return getal4.innerHTML = "",scoreGetal4.innerHTML="";
+                  }
+                  else{
+                  return getal4.innerHTML = vier, scoreGetal4.innerHTML = scoreVier;
+                  }
+              }
       break;
 
     case 5:
-      vijf= vijf - 1;
-      scoreVijf = vijf*5;
-      if(vijf==0){
-      return getal5.innerHTML = "",scoreGetal5.innerHTML="";
-      }
-      else{
-      return getal5.innerHTML = vijf, scoreGetal5.innerHTML = scoreVijf;
-      }
+          vijf= vijf - 1;
+          if (!scoreHold[4])
+              {
+                  scoreVijf = vijf*5;
+                  if(vijf==0){
+                  return getal5.innerHTML = "",scoreGetal5.innerHTML="";
+                  }
+                  else{
+                  return getal5.innerHTML = vijf, scoreGetal5.innerHTML = scoreVijf;
+                  }
+              }
       break;
 
     case 6:
-      zes= zes - 1;
-      scoreZes = zes*6;
-      if(zes==0){
-      return getal6.innerHTML = "",scoreGetal6.innerHTML="";
-      }
-      else{
-      return getal6.innerHTML = zes, scoreGetal6.innerHTML = scoreZes;
-      }
+          zes= zes - 1;
+          if (!scoreHold[5])
+              {
+                  scoreZes = zes*6;
+                  if(zes==0){
+                  return getal6.innerHTML = "",scoreGetal6.innerHTML="";
+                  }
+                  else{
+                  return getal6.innerHTML = zes, scoreGetal6.innerHTML = scoreZes;
+                  }
+              }
       break;
     default:
       break;
    }}
 //score updaten
 
-<<<<<<< HEAD
-threeOfAKind = function(array){
-
-}
-
-=======
 threeOfAKind = function(een,twee,drie,vier,vijf,zes){
   if(een ==3 || twee==3||drie==3||vier==3||vijf==3||zes==3){
     three=true;
@@ -336,7 +412,6 @@ chance = function(array){
   sum = array.reduce(function(a,b){return a+b;},0);
   scoreChance.innerHTML = sum;
 }
->>>>>>> refs/remotes/ajkea/master
 
 
 
